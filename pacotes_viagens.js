@@ -7,19 +7,34 @@ const listaDestinos = new Array(
 
 listaDestinos.push('Curitiba') //  adicionando Curitiba aos destinos
 
+console.log('\nDestinos disponíveis:')
+console.log(listaDestinos) // mostrando todos os destinos disponíveis
+
 const idadeComprador = 17
-const compradorAcompanhado = false
+const compradorAcompanhado = true
+let temPassagemComprada = false
+const destinoDesejado = 'São Paulo'
 
-console.log('Destinos disponíveis:')
-console.log(listaDestinos)
+const podeComprar = idadeComprador >= 18 || compradorAcompanhado == true
 
-if (idadeComprador >= 18 ||
-    compradorAcompanhado == true) {
-    console.log('Pacote vendido com sucesso.')
-    console.log('Destinos restantes:')
-    listaDestinos.splice(2,1) // deleta apenas 1 elemento a partir do index 2
-    console.log(listaDestinos)
+if (podeComprar) {
+    console.log(`\nDestino desejado: ${destinoDesejado}`)
 }
-else {
-    console.log('Comprador com idade abaixo de 18 anos e desacompanhado.\nNão é possível realizar a venda.')
+
+let contador = 0
+let destinoExiste = false
+
+// verificando se o destino escolhido está disponível
+while (contador < listaDestinos.length) {
+    if (listaDestinos[contador] == destinoDesejado) {
+        destinoExiste = true
+        {break}
+    }
+    contador += 1
+}
+
+if (destinoExiste == true) {
+    console.log('\n>>> Destino disponível <<<')
+} else {
+    console.log('\n>>> Destino indisponível <<<')
 }
